@@ -12,10 +12,14 @@ public class TemperatureSeriesAnalysis {
     public static final double LOWER_BOUND = -273.15;
     private static final int START_SIZE = 10;
     private static final double EPSILON = 1E-6;
-    private double[] tempsSequence = new double[START_SIZE];
+    private double[] tempsSequence;
     private int size = 0;
 
+    public TemperatureSeriesAnalysis(){
+        this.tempsSequence = new double[START_SIZE];
+    }
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
+        this.tempsSequence = new double[START_SIZE];
         addTemps(temperatureSeries);
 
     }

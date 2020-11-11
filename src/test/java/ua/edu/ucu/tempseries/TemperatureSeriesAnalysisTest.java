@@ -1,17 +1,16 @@
 package ua.edu.ucu.tempseries;
 
-import static org.junit.Assert.*;
-
-import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.InputMismatchException;
+
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 public class TemperatureSeriesAnalysisTest {
 
     @Test(expected = InputMismatchException.class)
-    public void testCreationWithInvalidTemps(){
+    public void testCreationWithInvalidTemps() {
         double[] temperatureSeries = {100.0, -273.15, 36.6};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
     }
@@ -30,7 +29,7 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);
     }
 
-//    @Ignore
+    //    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void testAverageWithEmptyArray() {
         double[] temperatureSeries = {};
@@ -40,7 +39,7 @@ public class TemperatureSeriesAnalysisTest {
         seriesAnalysis.average();
     }
 
-//    @Ignore
+    //    @Ignore
     @Test
     public void testAverage() {
         double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
@@ -48,12 +47,12 @@ public class TemperatureSeriesAnalysisTest {
         double expResult = 1.0;
 
         double actualResult = seriesAnalysis.average();
-        
-        assertEquals(expResult, actualResult, 0.00001);        
+
+        assertEquals(expResult, actualResult, 0.00001);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testDeviationWithEmptyArray(){
+    public void testDeviationWithEmptyArray() {
         double[] temperatureSeries = {};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
 
@@ -74,7 +73,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testMinWithEmptyArray(){
+    public void testMinWithEmptyArray() {
         double[] temperatureSeries = {};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
 
@@ -95,7 +94,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testMaxWithEmptyArray(){
+    public void testMaxWithEmptyArray() {
         double[] temperatureSeries = {};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
 
@@ -280,8 +279,5 @@ public class TemperatureSeriesAnalysisTest {
         seriesAnalysis.addTemps(23.0, -12.0);
         assertEquals(seriesAnalysis.getSize(), 14);
     }
-
-
-
 
 }
