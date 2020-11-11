@@ -10,10 +10,10 @@ import java.util.InputMismatchException;
 @Getter
 public class TemperatureSeriesAnalysis {
     public static final double LOWER_BOUND = -273.15;
-    private double[] tempsSequence = new double[START_SIZE];
-    private int size = 0;
     private static final int START_SIZE = 10;
     private static final double EPSILON = 1E-6;
+    private double[] tempsSequence = new double[START_SIZE];
+    private int size = 0;
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
         addTemps(temperatureSeries);
