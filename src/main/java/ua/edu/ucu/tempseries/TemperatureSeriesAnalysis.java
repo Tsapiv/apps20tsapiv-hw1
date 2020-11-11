@@ -10,9 +10,9 @@ import java.util.InputMismatchException;
 @Getter
 public class TemperatureSeriesAnalysis {
     private double[] tempsSequence = new double[START_SIZE];
-    private static final int START_SIZE = 10;
-    public static final double LOWER_BOUND = -273.15;
-    private static final double EPSILON = 1E-6;
+    static private final int START_SIZE = 10;
+    static public final double LOWER_BOUND = -273.15;
+    static private final double EPSILON = 1E-6;
     private int size = 0;
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
@@ -38,7 +38,7 @@ public class TemperatureSeriesAnalysis {
         double diff = 0;
         double mean = average();
         for (int i = 0; i < size; i++) {
-            diff += Math.pow(tempsSequence[i] - mean, 2);
+            diff += (tempsSequence[i] - mean) * (tempsSequence[i] - mean);
         }
         return Math.sqrt(diff / (size - 1));
     }
