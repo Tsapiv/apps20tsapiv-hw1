@@ -227,7 +227,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] actualResult1 = seriesAnalysis.findTempsGreaterThen(0);
         assertArrayEquals(expResult1, actualResult1, 0.0);
 
-        double[] actualResult2 = seriesAnalysis.findTempsGreaterThen(TemperatureSeriesAnalysis.LOWER_BOUND);
+        double[] actualResult2 = seriesAnalysis.findTempsGreaterThen(TemperatureSeriesAnalysis.getLOWER_BOUND());
         assertArrayEquals(temperatureSeries, actualResult2, 0.0);
     }
 
