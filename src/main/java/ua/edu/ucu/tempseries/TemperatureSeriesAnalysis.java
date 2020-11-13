@@ -21,9 +21,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double average() {
-        if (size == 0) {
-            throw new IllegalArgumentException();
-        }
+        checkEmpty();
         double total = 0;
         for (int i = 0; i < size; i++) {
             total += tempsSequence[i];
@@ -32,9 +30,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double deviation() {
-        if (size == 0) {
-            throw new IllegalArgumentException();
-        }
+        checkEmpty();
         double diff = 0;
         double mean = average();
         for (int i = 0; i < size; i++) {
@@ -44,9 +40,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double compare(DoubleBinaryOperator op) {
-        if (size == 0) {
-            throw new IllegalArgumentException();
-        }
+        checkEmpty();
         double el = tempsSequence[0];
         for (int i = 1; i < size; i++) {
             el = op.applyAsDouble(tempsSequence[i], el);
@@ -73,9 +67,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double findTempClosestToValue(double tempValue) {
-        if (size == 0) {
-            throw new IllegalArgumentException();
-        }
+        checkEmpty();
         double diff = Math.abs(tempsSequence[0] - tempValue);
         double closest = tempsSequence[0];
         for (int i = 1; i < size; i++) {
@@ -89,11 +81,9 @@ public class TemperatureSeriesAnalysis {
         }
         return closest;
     }
-    
+
     public double[] filter(double tempValue, TwoArgInterface op) {
-        if (size == 0) {
-            throw new IllegalArgumentException();
-        }
+        checkEmpty();
         double[] tempArray = new double[size];
         int j = 0;
         for (int i = 0; i < size; i++) {
@@ -135,6 +125,12 @@ public class TemperatureSeriesAnalysis {
         }
         this.size += temps.length;
         return size;
+    }
+    
+    private void checkEmpty() {
+        if (this.size == 0) {
+            throw new IllegalArgumentException();
+        }
     }
 }
 
